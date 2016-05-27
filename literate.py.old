@@ -1,0 +1,26 @@
+#literate text editor (python-based)
+#personal project--learning to use curses
+
+#(c) brunston
+
+import curses
+import sys
+
+stdscr = curses.initscr()
+
+#Turn off auto-echo (enable reading of keys prior to displaying)
+curses.noecho()
+#React to keys instantly without buffered input relying on Enter key
+curses.cbreak()
+#enable special keys using curses processing
+stdscr.keypad(True)
+
+def exit_program():
+    #reverse 'curses-friendly terminal settings'
+
+    curses.nocbreak()
+    stdscr.keypad(False)
+    curses.echo()
+    
+    curses.endwin()
+    sys.exit()
